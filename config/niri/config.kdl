@@ -1,0 +1,64 @@
+// Gentoo Niri config adapted from the upstream Hyprland rice.
+input {
+    keyboard { xkb { layout "us" }; repeat-delay 600; repeat-rate 25 }
+    touchpad { tap; natural-scroll }
+    mouse { accel-speed 0.0 }
+    focus-follows-mouse
+}
+prefer-no-csd
+layout {
+    gaps 6
+    center-focused-column "never"
+    default-column-width { proportion 0.5; }
+    preset-column-widths { proportion 0.333333; proportion 0.5; proportion 0.666667; }
+    focus-ring { width 2; active-color "#89b4fa"; inactive-color "#595959aa" }
+    border { off }
+}
+animations { slowdown 1.0 }
+spawn-at-startup "waybar"
+spawn-at-startup "swaybg" "-i" "$HOME/Pictures/wallpapers/default.jpg" "-m" "fill"
+binds {
+    Super+Return { spawn "kitty"; }
+    Super+D { spawn "fuzzel"; }
+    Super+E { spawn "xdg-open" "$HOME"; }
+    Super+Q { close-window; }
+    Super+Shift+E { quit; }
+    Super+Shift+W { spawn "$HOME/.local/bin/rice-wallpaper"; }
+    Super+Shift+S { spawn "$HOME/.local/bin/rice-screenshot"; }
+    Super+V { toggle-window-floating; }
+    Super+F { maximize-column; }
+    Super+Left { focus-column-left; }
+    Super+Right { focus-column-right; }
+    Super+Up { focus-window-up; }
+    Super+Down { focus-window-down; }
+    Super+Shift+Left { move-column-left; }
+    Super+Shift+Right { move-column-right; }
+    Super+Shift+Up { move-window-up; }
+    Super+Shift+Down { move-window-down; }
+    Super+1 { focus-workspace 1; }
+    Super+2 { focus-workspace 2; }
+    Super+3 { focus-workspace 3; }
+    Super+4 { focus-workspace 4; }
+    Super+5 { focus-workspace 5; }
+    Super+6 { focus-workspace 6; }
+    Super+7 { focus-workspace 7; }
+    Super+8 { focus-workspace 8; }
+    Super+9 { focus-workspace 9; }
+    Super+0 { focus-workspace 10; }
+    Super+Shift+1 { move-window-to-workspace 1; }
+    Super+Shift+2 { move-window-to-workspace 2; }
+    Super+Shift+3 { move-window-to-workspace 3; }
+    Super+Shift+4 { move-window-to-workspace 4; }
+    Super+Shift+5 { move-window-to-workspace 5; }
+    Super+Shift+6 { move-window-to-workspace 6; }
+    Super+Shift+7 { move-window-to-workspace 7; }
+    Super+Shift+8 { move-window-to-workspace 8; }
+    Super+Shift+9 { move-window-to-workspace 9; }
+    Super+Shift+0 { move-window-to-workspace 10; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
+    XF86AudioMute allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioPlay allow-when-locked=true { spawn "playerctl" "play-pause"; }
+    XF86AudioNext allow-when-locked=true { spawn "playerctl" "next"; }
+    XF86AudioPrev allow-when-locked=true { spawn "playerctl" "previous"; }
+}
