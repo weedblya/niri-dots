@@ -27,6 +27,6 @@ less install.sh
 ./install.sh
 ```
 
-The installer backs up managed config files before replacing them and does not install packages or modify system services. Put wallpapers in `~/Pictures/wallpapers`; use `Super+Shift+W` to pick one. Region screenshots are saved to `~/Pictures/Screenshots` and copied to the clipboard when `wl-clipboard` is installed; use `Super+Shift+S`.
+The installer backs up managed config files before replacing them and does not install packages or modify system services. The keyboard is configured for English and Russian; switch layouts with `Alt+Shift`. Put wallpapers in `~/Pictures/wallpapers`; use `Super+Shift+W` to pick one. Region screenshots are saved to `~/Pictures/Screenshots` and copied to the clipboard when `wl-clipboard` is installed; use `Super+Shift+S`.
 
 Review `config/niri/config.kdl` and validate with `niri validate` if supported by your installed version. Monitor configuration is left to Niri's auto-detection.
