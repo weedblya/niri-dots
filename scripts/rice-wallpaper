@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+WALL_DIR="${WALLPAPER_DIR:-$HOME/Pictures/wallpapers}"
+mkdir -p "$WALL_DIR"
+command -v fuzzel >/dev/null && command -v swaybg >/dev/null || { echo "Install fuzzel and swaybg" >&2; exit 1; }
+mapfile -d '' files < <(find "$WALL_DIR" -maxdepth 1 -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \) -print0 | sort -z)
+(("${#files[@]}" > 0)) || { echo "No wallpapers in $WALL_DIR" >&2; exit 1; }
+selected="$(printf '%s\n' "${files[@]}" | sed "s#^$WALL_DIR/##" | fuzzel --dmenu --prompt='Wallpaper > ')" || exit 0
+[[ -n "$selected" ]] || exit 0
+image="$WALL_DIR/$selected"
+pkill swaybg 2>/dev/null || true
+swaybg -i "$image" -m fill >/dev/null 2>&1 &
+if command -v matugen >/dev/null; then
+  matugen image "$image"
+  pkill -x waybar 2>/dev/null || true
+  waybar >/dev/null 2>&1 &
+fi
