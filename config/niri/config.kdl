@@ -16,7 +16,7 @@ layout {
 }
 animations { slowdown 1.0 }
 spawn-at-startup "waybar"
-spawn-at-startup "swaybg" "-i" "$HOME/Pictures/wallpapers/default.jpg" "-m" "fill"
+spawn-at-startup "sh" "-c" "swaybg -i \"$HOME/Pictures/wallpapers/default.jpg\" -m fill"
 binds {
     Super+Return { spawn "kitty"; }
     Super+D { spawn "fuzzel"; }
